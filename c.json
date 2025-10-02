@@ -1,0 +1,25 @@
+const hobbies = ['DOTA 2', 'Coding', 'Music', 'Drums playing', 'Clash Roale'];
+const hobbyList = document.getElementById('hobbyList');
+const shuffleBtn = document.getElementById('shuffleBtn');
+
+function renderHobbies(hobbies) {
+  hobbyList.innerHTML = '';
+  hobbies.forEach(hobby => {
+    const li = document.createElement('li');
+    li.className = 'hobby-item';
+    li.textContent = hobby;
+    hobbyList.appendChild(li);
+  });
+}
+
+function shuffleHobbies() {
+  for (let i = hobbies.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [hobbies[i], hobbies[j]] = [hobbies[j], hobbies[i]];
+  }
+  renderHobbies(hobbies);
+}
+
+shuffleBtn.addEventListener('click', shuffleHobbies);
+
+renderHobbies(hobbies);
